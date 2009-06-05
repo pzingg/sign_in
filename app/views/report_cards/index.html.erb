@@ -1,0 +1,30 @@
+<h2>Report Cards</h2>
+<p>Hi, <%= current_user.email %>!</p>
+<% if current_user.any_report_cards? -%>
+<p>For best results, right-click or control-click on a "Download/View" link
+  and then choose "Save Target As...", "Save Link As..." or "Download Linked File as..."</p>
+<table border="0" width="500">
+  <tr>
+    <td colspan="2">Student/Year</td>
+    <td>Term</td>
+    <td>Report Card</td>
+  </tr>
+<% for stu in current_user.students do -%>
+  <tr>
+    <td colspan="4"><strong><%= stu.full_name %></strong></td>
+  </tr>
+<% for rc in stu.report_cards do -%>
+<tr>
+  <td width="50">&nbsp;</td>
+  <td><%= rc.year %></td>
+  <td><%= rc.term.upcase %></td>
+  <td><%= link_to 'Download/View', report_card_url(:id => rc.name, :format => 'pdf') %></td>
+</tr>
+<% end -%>
+<% end -%>
+</table>
+<% else -%>
+<p>Your account does not have access to any posted report cards at this time.</p>
+<% end %>
+<%= link_to 'View/change passwords and other settings', account_url %> |
+<%= link_to 'Sign out', logout_url %>

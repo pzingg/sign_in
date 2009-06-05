@@ -1,0 +1,25 @@
+sign_in Rails project
+
+Copyright (c) 2009 Kentfield School District.
+
+Ldap-backed sign-in using Rails 2.3.  Includes functionality to store and
+deliver user-associated PDF report cards in SQL.
+
+Adapted from thoughtbot's "clearance" plugin:
+http://github.com/thoughtbot/clearance/tree/master
+
+SQL user database that is authenticated and updated against an ldap server.
+Lookup is by email address.  Email addresses can be associated with 
+mulitple ldap entries in different organizational units.  Passwords
+are checked against all of an email address's entries, and authentication
+passes if any of them match.
+
+Next feature: Permit users to change passwords in the ldap database; 
+password changes must be confirmed by email address (or not).
+
+Then: Use Rails Metal to use the authentication for password protecting
+a static website.
+
+Possibly: Use a reverse proxy front-end to detect and distribute 
+authentication cookies among different domains (PowerSchool, Schoolwires,
+and KSD's internal servers).

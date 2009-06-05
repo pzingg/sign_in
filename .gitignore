@@ -1,0 +1,13 @@
+.DS_Store
+*.tmproj
+*.sqlite3
+database.yml
+bin/*
+config/initializers/host_specific_settings.rb
+data/*
+db/schema.rb
+doc/*
+ldif/*
+log/*
+pdf/*
+tmp/*
